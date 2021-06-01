@@ -1,5 +1,4 @@
 To reproduce:
 
-1. npm i -g pnpm
-2. pnpm i
-3. pnpm test
+1. pnpm i
+2. pnpm test

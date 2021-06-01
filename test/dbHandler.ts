@@ -5,9 +5,7 @@ let mongoServer: MongoMemoryServer;
 
 export const connectDB = async (uri?: string): Promise<void> => {
   if (!uri) {
-    mongoServer = new MongoMemoryServer();
-
-    await mongoServer.start();
+    mongoServer = await MongoMemoryServer.create();
 
     uri = mongoServer.getUri();
   }

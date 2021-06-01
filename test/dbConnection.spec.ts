@@ -1,9 +1,7 @@
 import { closeDB, connectDB } from './dbHandler';
 
 describe('Test DB connection', () => {
-  afterAll(async () => {
-    await closeDB();
-  });
+  afterAll(closeDB);
 
   it('should failed to connect database', async () => {
     await expect(connectDB('Intentional incorrect URI')).rejects.toThrowError();

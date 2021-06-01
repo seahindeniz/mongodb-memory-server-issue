@@ -3,20 +3,20 @@ import mongoose from 'mongoose';
 
 let mongoServer: MongoMemoryServer;
 
-async function mongooseConnect(uri: string): Promise<void> {
+export const connectDB = async (uri?: string): Promise<void> => {
+  if (!uri) {
+    mongoServer = new MongoMemoryServer();
+
+    await mongoServer.start();
+
+    uri = mongoServer.getUri();
+  }
+
   await mongoose.connect(uri, {
     useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-}
-
-export const connectDB = async (uri?: string): Promise<void> => {
-  mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  console.log(mongoServer.getUri());
-
-  mongooseConnect(uri || mongoServer.getUri());
 };
 
 export const closeDB = async (): Promise<void> => {

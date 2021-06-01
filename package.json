@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "test": "jest --detectOpenHandles --forceExit"
   },
   "keywords": [],
